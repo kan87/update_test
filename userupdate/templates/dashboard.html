@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Private Info</title>
+</head>
+<body>
+    <h1>This is private information (<a href="{% url 'logout' %}">Logout</a>)</h1>
+    <p>You are logged in as {{firstname}} {{lastname}}</p>
+    {% if message %}
+      <font color="red">
+        <h3>{{message}}</h3>
+      </font>
+    {% endif %}
+    <p>Your birthday is {{birthday}}</p>
+    </form>
+</body>
+</html>

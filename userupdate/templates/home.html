@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Computer Simulation</title>
+    </head>
+    <body>
+        Computer Simulation<br><br>
+        <form action="/yourinfo" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+        <h1>Public Info</h1>
+        <p>There are <b>{{num_users}}</b> users signed up</p>
+        <p>You can <a href="{{login_url}}">login</a> to view your private page</p>
+        <p>You're logged in as {{request.user.username}}</p>
+    </body>
+</html>

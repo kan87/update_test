@@ -5,14 +5,29 @@
     <title>Super Private Info</title>
 </head>
 <body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <h1><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h1>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <h1>This is private information (<a href="{% url 'logout' %}">Logout</a>)</h1>
-    <p>You are logged in as {{firstname}} {{lastname}}</p>
+    <p>You are logged in as {{first_name}} {{last_name}}</p>
+    <p>You're email is {{email}}</p>
     {% if message %}
       <font color="red">
         <h3>{{message}}</h3>
       </font>
     {% endif %}
     <p>Your birthday is {{birthday}}</p>
+
+    <form action="/dashboard" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
     </form>
+
 </body>
 </html>

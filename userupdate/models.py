@@ -3,12 +3,13 @@ from django.db import models
 # Create your models here.
 
 class Pilot(models.Model):
-    e_id = models.CharField(max_length=50, unique=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    e_id = models.CharField('Employee ID', max_length=50, unique=True)
+    first_name = models.CharField('First Name', max_length=50)
+    last_name = models.CharField('Last Name', max_length=50)
     extra = models.CharField(max_length=50)
     extra_locked = models.CharField(max_length=50, blank=True)
-    
+    approved = models.BooleanField('Approved', default=False)
+
     def __str__(self):
         return self.first_name
     
@@ -17,7 +18,7 @@ class Pilot(models.Model):
 
 
 class PendingPilot(models.Model):
-    e_id = models.CharField(max_length=50, unique=True)
+    e_id = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     extra = models.CharField(max_length=50)
